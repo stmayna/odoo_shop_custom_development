@@ -2,8 +2,6 @@
 from odoo import models, _
 from odoo.exceptions import ValidationError
 from odoo.tools.float_utils import float_compare
-import logging
-_logger = logging.getLogger(__name__)
 
 
 class PurchaseInvoiceAccountMove(models.Model):
@@ -22,10 +20,8 @@ class PurchaseInvoiceAccountMove(models.Model):
             if (
                 line.move_id.move_type != 'in_invoice'
                 or not line.purchase_line_id
-                # or line.display_type != 'product'
                 or line.purchase_line_id.product_id.purchase_method != 'receive'
             ):
-                _logger.info("Skipping validation for line %s as it does not meet the criteria.", line.id)
 
                 continue
 
@@ -55,8 +51,6 @@ class PurchaseInvoiceAccountMove(models.Model):
                 })
 
     def action_post(self):
-        _logger.info("Starting validation of received quantities for vendor bill %s.", self.name)
         self._validate_received_quantity_vendor_bill()
-        _logger.info("Validation successful for vendor bill %s. Proceeding to post.", self.name)
         res = super().action_post()
         return res

@@ -23,7 +23,7 @@ Technical
 The module extends account.move validation logic for vendor bills
 linked to purchase order lines.
     """,
-    "author": "mayna,diandra",
+    "author": "Mayna,Diandra",
     "website": "https://github.com/stmayna",
     "license": "LGPL-3",
     "depends": [

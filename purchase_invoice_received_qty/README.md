@@ -20,17 +20,15 @@ The validation is applied on vendor bills linked to Purchase Order lines to ensu
 
 ## Requirements
 
-To make this validation work properly, the Purchase Order must use:
-
-> Bill Control = Received quantities
+To make this validation work properly, the Product must use:
 
 Technical value:
 
 ```python
-purchase_method = 'receive'
+product_id.purchase_method = 'receive'
 ```
 
-The validation only runs for Purchase Orders configured with received quantity billing.
+The validation only runs for Product configured with received quantity purchase method.
 
 ---
 
@@ -58,7 +56,7 @@ The validation only runs for Purchase Orders configured with received quantity b
 Create a Purchase Order with:
 
 - Products that require receiving
-- Bill Control set to **Received quantities**
+- Product Control Policy set to **Received quantities**
 
 ---
 
@@ -104,7 +102,7 @@ account.move
 
 ## Author
 
-Siti Mayna
+Siti Mayna, Diandra Putri Septiani
 
 GitHub:
 https://github.com/stmayna
